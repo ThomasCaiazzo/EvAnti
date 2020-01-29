@@ -1,14 +1,15 @@
 
--- Example Anti-Backdoor Gmod Lua
--- Ev Anti BackDoor 0.3a
+-- Example Anti-Backdoor Gmod Lua 'backdoor buster'
+-- Ev Anti BackDoor 0.4a
 -- by [>.<]Ev1L|Cracka 
 -- 01/21/2020
 -- Detour underlying functions with blacklist 
 
-print("Loading EvAnti 0.3a");
+print("Loading EvAnti 0.4a");
 
 local EvAnti  = {};
 EvAnti.PrintConsole = true;
+EvAnti.PrintConsoleStack = true;
 EvAnti.PrintExtras = false;
 EvAnti.BlackList = {
 	"FEUfTTZgREUmJMEHccceOEpGSXZAnR",
@@ -59,6 +60,7 @@ end
 EvAnti.OldRunString = RunString;
 
 function RunString(...)
-	if EvAnti.PrintConsole then print("EvAnti:\n", ...) end-- Spew string to console
+	if EvAnti.PrintConsole then print("EvAnti:\n", ...) end -- Spew string to console
+	if EvAnti.PrintConsoleStack then debug.Trace() end
 	EvAnti.OldRunString(...)
 end
